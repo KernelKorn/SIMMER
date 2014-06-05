@@ -6,14 +6,19 @@ require_once ('config.php');
 session_start();
 //Used to set the lesson Header for the corresponding question
 if (isset($_POST['questionLessonHeader'])) {
-	if ($_POST['questionLessonHeader'] == '1') {
-		echo "Lesson 1: The Basics";
-	} else if ($_POST['questionLessonHeader'] == '2') {
-		echo "Lesson 2: The Ratio";
-	} else if ($_POST['questionLessonHeader'] == '3') {
-		echo "Lesson 3: Single Locus";
-	} else if ($_POST['questionLessonHeader'] == '4') {
-		echo "Lesson 4: Something else";
+	switch ($_POST['questionLessonHeader']){
+		case '1':
+			echo "Lesson 1: The Basics";
+			break;
+		case '2': 
+			echo "Lesson 2: The Ratio";
+			break;
+		case '3'
+			echo "Lesson 3: Single Locus";
+			break;
+		case '4'
+			echo "Lesson 4: Something else";
+			break;
 	}
 }//end
 //Used to set the lesson Question Text for the corresponding Lesson
@@ -77,15 +82,21 @@ if (isset($_POST['randomQuestionText'])) {
 		function generateRatio() {
 			$totalRandom = rand(1, 3);
 
-			if ($totalRandom == 1) {
-				random121();
-			} else if ($totalRandom == 2) {
-				random31();
-			} else if ($totalRandom == 3) {
-				random21();
-			} else {
-				random9331();
+			switch($totalRandom) {
+				case 1:
+					random121();
+					break;
+				case 2: 
+					random31();
+					break;
+				case 3:
+					random21();
+					break;
+				default:
+					random9331();
+					break;
 			}
+			
 		}//end generateRatio
 
 		//for the 1 : 2 : 1 ratio
@@ -252,7 +263,9 @@ if (isset($_POST['randomQuestionText'])) {
 			$_SESSION['correct'][2] = 'false';
 			$_SESSION['correct'][3] = 'true';
 			$_SESSION['feedback_correct'] = "This is a monohybrid (two heterozygotes) cross that resulted in a 3 : 1 offspring ratio.  Parents were Yy and Yy.";
-			$_SESSION['feedback_incorrect'] = "This is Incorrect. Please try again.";
+			$_SESSION['feedback_incorrect'] = "This is Incorrect. Please try again.";
+
+
 			$a = rand(0, 24);
 			$b = rand(0, 10);
 
@@ -280,7 +293,9 @@ if (isset($_POST['randomQuestionText'])) {
 			$_SESSION['feedback_correct'] = "This cross resulted in no recessives, so at least one of the parents was a homozygous dominant YY, the other could be YY or Yy.  How might you decide which is which?";
 			$_SESSION['feedback_incorrect'] = "This is Incorrect. Please try again.";
 			$_SESSION['feedback_partially'][0] = "A possible choice for the parents could be YY and Yy, but are their any other choices?";
-			$_SESSION['feedback_partially'][2] = "A possible choice for the parents could be YY and YY, but are their any other choices?";
+			$_SESSION['feedback_partially'][2] = "A possible choice for the parents could be YY and YY, but are their any other choices?";
+
+
 			$b = rand(0, 4);
 
 			if (rand(1, 2) == 1) {
