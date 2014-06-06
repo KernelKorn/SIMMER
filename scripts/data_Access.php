@@ -216,25 +216,31 @@ if (isset($_POST['randomQuestionText'])) {
 
 			$randomprint = rand(1, 6);
 
-			if ($randomprint == 1) {
-				echo $random1 . ":" . $random2 . ":" . $random3 . ":" . $random4;
-				//9:3:3:1
-			} else if ($randomprint == 2) {
-				echo $random2 . ":" . $random1 . ":" . $random3 . ":" . $random4;
-				//3:9:3:1
-			} else if ($randomprint == 3) {
-				echo $random2 . ":" . $random3 . ":" . $random4 . ":" . $random1;
-				//3:3:1:9
-			} else if ($randomprint == 4) {
-				echo $random2 . ":" . $random4 . ":" . $random3 . ":" . $random1;
-				//3:1:3:9
-			} else if ($randomprint == 5) {
-
-				echo $random4 . ":" . $random3 . ":" . $random2 . ":" . $random1;
-				//1:3:3:9
-			} else {
-				echo $random3 . ":" . $random2 . ":" . $random1 . ":" . $random4;
-				//3:3:9:1
+			switch ($randomprint) {
+				case 1:
+					echo $random1 . ":" . $random2 . ":" . $random3 . ":" . $random4;
+					break;
+					//9:3:3:1
+				case 2:
+					echo $random2 . ":" . $random1 . ":" . $random3 . ":" . $random4;
+					break;
+					//3:9:3:1
+				case 3:
+					echo $random2 . ":" . $random3 . ":" . $random4 . ":" . $random1;
+					break;
+					//3:3:1:9
+				case 4:
+					echo $random2 . ":" . $random4 . ":" . $random3 . ":" . $random1;
+					break;
+					//3:1:3:9
+				case 5:
+					echo $random4 . ":" . $random3 . ":" . $random2 . ":" . $random1;
+					break;
+					//1:3:3:9
+				default:
+					echo $random3 . ":" . $random2 . ":" . $random1 . ":" . $random4;
+					break;
+					//3:3:9:1
 			}
 		}//end 9 : 3 : 3 : 1
 
